@@ -1,4 +1,5 @@
 from src.masks import get_mask_card_number
+import masks
 
 
 def mask_account_card(data_card: str) -> str:
@@ -12,7 +13,7 @@ def mask_account_card(data_card: str) -> str:
 
 def get_date(user_date: str) -> str:
     """Функция. которая приводит дату  к общему формату"""
-    date_format = datetime.strptime(user_date, "%Y-%m-%dT%H:%M:%S.%f")
+    date_format = user_date.strptime(user_date, "%Y-%m-%dT%H:%M:%S.%f")
     new_date = date_format.strftime("%d.%m.%Y")
     return new_date
 
@@ -25,3 +26,4 @@ print(mask_account_card("Visa Classic 6831982476737658"))
 print(mask_account_card("Visa Platinum 8990922113665229"))
 print(mask_account_card("Visa Gold 5999414228426353"))
 print(mask_account_card("Счет 73654108430135874305"))
+print(get_date("2024-03-11T02:26:18.671407*"))
