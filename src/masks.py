@@ -1,5 +1,7 @@
-from src.widget import mask_account_card, get_date
 import widget
+
+card_number_str = input()
+account_number_str = input()
 
 
 def get_mask_card_number(card_number: str) -> str:

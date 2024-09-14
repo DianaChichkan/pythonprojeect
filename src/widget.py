@@ -1,5 +1,6 @@
+from datetime import datetime
+
 from src.masks import get_mask_card_number
-import masks
 
 
 def mask_account_card(data_card: str) -> str:
@@ -13,7 +14,7 @@ def mask_account_card(data_card: str) -> str:
 
 def get_date(user_date: str) -> str:
     """Функция. которая приводит дату  к общему формату"""
-    date_format = user_date.strptime(user_date, "%Y-%m-%dT%H:%M:%S.%f")
+    date_format = datetime.strptime(user_date, "%Y-%m-%dT%H:%M:%S.%f")
     new_date = date_format.strftime("%d.%m.%Y")
     return new_date
 
