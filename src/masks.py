@@ -1,5 +1,3 @@
-import widget
-
 card_number_str = input()
 account_number_str = input()
 
