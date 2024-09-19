@@ -2,7 +2,7 @@ from typing import Any
 
 
 def filter_by_state(dictionary_inform: list[dict[str, Any]], state_id: str = "EXECUTED") -> list[dict[str, Any]]:
-    """Функция задает параметры поиска по параметру"""
+    """Функция задает параметры поиска в исходных данных"""
 
     list_state = []
     for key in dictionary_inform:
