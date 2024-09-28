@@ -1,9 +1,11 @@
 from datetime import datetime
-from masks import get_mask_card_number
+from src.masks import get_mask_card_number
 
 
 def mask_account_card(data_card: str) -> str:
     """Функция, обрабатывающая информацию о картах и счетах"""
+    if data_card == "":
+        return "Некорректный ввод"
     number_card = "".join(el if el.isdigit() else "" for el in data_card)
     number_card_mask = get_mask_card_number(number_card)
     name_card = "".join(el if el.isdigit() else "" for el in data_card)
@@ -12,7 +14,9 @@ def mask_account_card(data_card: str) -> str:
 
 
 def get_date(user_date: str) -> str:
-    """Функция. которая приводит дату  к общему формату"""
+    """Функция, которая приводит дату к общему формату"""
+    if user_date == "":
+        return "Некорректный ввод"
     date_format = datetime.strptime(user_date, "%Y-%m-%dT%H:%M:%S.%f")
     new_date = date_format.strftime("%d.%m.%Y")
     return new_date

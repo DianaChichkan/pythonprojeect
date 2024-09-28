@@ -1,4 +1,12 @@
-from src.masks import card_number_str
+from src.masks import get_mask_card_number, get_mask_account
+
+card_number = input()
+account_number = input()
 
 
-print(masks(card_number_str: '7000792289606361', account_number: '73654108430135874305'))
+def get_mask_card_number(card_number):
+    return card_number
+
+
+def get_mask_account(account_number):
+    return account_number
