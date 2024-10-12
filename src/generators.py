@@ -22,6 +22,5 @@ def card_number_generator(start, end):
             card_number = "0" + card_number
         yield f"{card_number[0:4]} {card_number[4:8]} {card_number[8:12]} {card_number[12:16]}"
 
-
-    for card_number in card_number_generator(1,20):
+    for card_number in card_number_generator(1, 20):
         return card_number
