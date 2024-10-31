@@ -1,25 +1,23 @@
 import pytest
+
 from src.decorators import log
 
 
-@log(filename="mylog.txt")
+@log()
 def my_function(x, y):
+    """Функция, которая суммирует два числа"""
     return x + y
 
-my_function(1, 2)
+
+def test_test_console_ok(capsys):
+    """Тест функции, при которой логи будут записываться в файл"""
+    my_function(2, 3)
+    output = capsys.readouterr()
+    assert output.out == "my_function ok\n"
 
 
-def test_my_function(capsys):
-    @log()
-    def my_function(x, y):
-        return x + y
-
-    result = my_function("2", "5")
+def test_log_console_error(capsys):
+    """Тест функции, при которой логи выводятся в консоль"""
+    my_function(2, "3")
     captured = capsys.readouterr()
-    assert captured.out == "Function started\nFunction finished\nmy_function error: can`t multiply sequence by non-int of type 'str'. Inputs:(('2', '5', {}\n"
-    assert result == 7
-
-
-def test_loging_decorator():
-    with pytest.raises(Exception, match="Unsupported operand type(s) for: 'int' and 'str'"):
-        my_function(1, 1)
+    assert captured.out == "my_function error: TypeError. Inputs: (2, '3'), {}\n"
