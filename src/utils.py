@@ -15,4 +15,5 @@ def get_transactions(path_to_json: str) -> list:
         print(e)
         return []
 
+
 print(get_transactions("../data/operation.json"))
