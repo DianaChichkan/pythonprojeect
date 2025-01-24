@@ -14,7 +14,7 @@ def get_transaction_amount(transaction: dict) -> float:
         currency = transaction["operationAmount"]["currency"]["code"]
         amount = transaction["operationAmount"]["amount"]
         if currency == "RUB":
-            return amount
+            return float(amount)
         elif currency == "USD":
             return get_convert_from_to("USD", "RUB", amount)
         elif currency == "EUR":
@@ -32,7 +32,9 @@ def get_convert_from_to(from_currency: str, to_currency: str, amount: float) -> 
 
     response = requests.request("GET", url, headers=headers, data=payload)
     json = response.json()
-    return json[amount]
+    if 'result' not in json:
+        return json['message']
+    return round(json['result'], 2)
 
 
 for transaction in list_of_transactions:
